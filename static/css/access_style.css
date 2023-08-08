@@ -1,0 +1,111 @@
+/* Reset some default styles */
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply some basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-position: center;
+}
+
+.container {
+    max-width: 1000px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+
+}
+
+.titlecontainer {
+    font-size: 25px;
+    font-weight: bold; /* Set to bold */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+}
+
+/* Form styling */
+form {
+    margin-top: 25px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+button[type="button"] {
+    width: 100%;
+    padding: 8px; /* Adjusted padding */
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 15px;
+    font-size: 18px;
+    box-sizing: border-box; /* Added box-sizing property */
+    text-align: center;
+    color: #007bff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+}
+
+/* Style for autofill state */
+input[type="text"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill,
+input[type="submit"]:-webkit-autofill,
+button[type="button"]:-webkit-autofill {
+    -webkit-text-fill-color: #007bff;
+    transition: background-color 5000s ease-in-out 0s; /* Override Chrome's autofill background color */
+}
+
+input[type="submit"],
+button[type="button"] {
+    margin-top: 12px;
+    margin-bottom: 0px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    width: 40%;
+    font-size: 18px;
+    box-sizing: border-box; /* Added box-sizing property */
+}
+
+input[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: black;
+    color: #007bff;
+}
+
+.message-list {
+    list-style: none;
+    padding: 0;
+    text-align: center; /* Center the messages */
+    font-size: 18px;
+}
+
+/* Error messages */
+.error {
+    color: red;
+}
+
+/* Additional styles for the success and error classes */
+.success {
+    color: green;
+}

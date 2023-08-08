@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/access_style.css') }}">
+</head>
+<body 
+    style="background-image: url('../static/images/signup.jpg'); background-size: cover;">
+    <div class="container">
+        <div class="titlecontainer"><h1 align="center">Welcome</h1></div>
+        <form method="POST" action="{{ url_for('signup') }}">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="text" name="email" placeholder="Email" required><br>
+            <input type="password" name="password1" placeholder="Password" required><br>
+            <input type="password" name="password2" placeholder="Confirm Password" required><br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="message-list {% if 'success' in messages %}success{% else %}error{% endif %}">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <div class="button-container">
+                <button type="button" onclick="redirectToPage()">Return</button>
+                <input type="submit" value="Signup">
+            </div>
+            <script>
+                function redirectToPage() {
+                    window.location.href = "login";
+                }
+            </script>
+        </form>
+    </div>
+</body>
+</html>
