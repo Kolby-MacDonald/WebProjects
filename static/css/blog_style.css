@@ -1,0 +1,94 @@
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the banner container */
+.access-banner {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items at the top */
+    margin: 10px;
+    position: absolute; /* Position the banner absolutely */
+    top: 0; /* Place at the top */
+    left: 0; /* Place at the left */
+    width: 70px; /* Take up 50% width of the viewport */
+    height: 75px; /* Take up 50% height of the viewport */
+}
+
+/* Style the button container */
+.button-container {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center items horizontally */
+    margin-top: 5px; /* Add some spacing from the banner text */
+}
+
+.button-container button {
+    width: 100%;
+    padding: 4px; /* Adjusted padding */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    color: grey;
+    cursor: pointer;
+}
+
+.button-container button + button {
+    margin-top: 5px;
+}
+
+button[type="button"]:hover {
+    background-color: black;
+    color: #007bff;
+}
+
+/* Style the column controller container */
+/* Style the column controller container */
+.column-container {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items at the top */
+    margin: 10px;
+    position: absolute; /* Position the container absolutely */
+    top: calc(105px); /* Place below the access-banner */
+    left: 0; /* Place at the left */
+    width: 70px; /* Set the width */
+    height: calc(100% - 160px); /* Calculate height based on available space */
+}
+
+.main-container{
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items at the top */
+    margin: 10px;
+    position: absolute; /* Position the container absolutely */
+}
+
+
+
+

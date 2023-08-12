@@ -29,6 +29,12 @@ class User(UserMixin):
         self.id = id
         self.role = role
 
+
+@app.route('/')
+def blog():
+
+    return render_template('blog.html')
+
 @login_manager.user_loader
 def load_user(id):
     user = session.query(Users).get(id)
@@ -40,7 +46,7 @@ def load_user(id):
 def is_safe_path(basedir, path):
     return os.path.realpath(path).startswith(basedir)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -96,6 +102,7 @@ def signup():
                 flash(f'Error: If persist\'s, contact X@gmail.com.', 'error')
 
     return render_template('signup.html')
+
 
 @app.route('/admin', methods=['GET'])
 @login_required
