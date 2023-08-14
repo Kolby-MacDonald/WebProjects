@@ -1,10 +1,11 @@
+<!-- Blog page currently serves as main page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/blog_style.css">
-    <title>The CyberBug Bunker</title>
+    <link rel="stylesheet" href="../static/css/blog_style.css"> <!-- Use CSS Sheet blog.css -->
+    <title>Bug's Bunker</title> <!-- Table Title : Subject to change -->
     <style>
         body, html {
             height: 100%;
@@ -13,25 +14,44 @@
         }
     </style>
 </head>
-    <body style="background-color: grey;">
+    <body>
         <div>
-            <div class="access-banner">
+            <div class="access-banner"> <!-- Top Left Button Container -->
                 <div class="button-container">
-                    <button type="button" onclick=redirectToLogin()>Login</button>
-                    <button type="button" onclick=redirectToSignup()>Signup</button>
-                    <script>
+
+                    {% if user_status == "logged_in" %} <!-- Access Buttons For Logged In Users -->
+                        <button type="button" onclick="redirectToLogin()">Logout</button>
+                        <button type="button" onclick="redirectToSignup()">My Account</button>
+                    {% else %} <!-- Access Buttons For Non Logged In Users -->
+                        <button type="button" onclick="redirectToLogin()">Login</button>
+                        <button type="button" onclick="redirectToSignup()">Signup</button>
+                    {% endif %}
+
+                    <!-- Access Buttons Functions -->
+                    <script> 
                         function redirectToLogin() {
                             window.location.href = "login";
                         }
                         function redirectToSignup() {
                             window.location.href = "signup";
                         }
+                        function redirectToLogout() {
+                            window.location.href = "logout";
+                        }
                     </script>
+
                 </div>
             </div>
+        </div> 
+        <div class="column-container"> <!-- TESTING NAVBAR: Intend to have buttons like projects, blogs, and more-->
+            <button type="button" onclick="">1</button> <!-- Styling Needed -->
+            <button type="button" onclick="">2</button>
+            <button type="button" onclick="">3</button>
+            <button type="button" onclick="">4</button>
         </div>
-        <div class="column-container">
-            <!-- Content for the column controller goes here -->
+        <div class="header-container"> <!-- TESTING : Header / Nav Bar Sorta -->
+            <div class="blog-title"><h1><i>BUG'S BUNKER</i></h1></div>
+            
         </div>
     </body>
 </html>

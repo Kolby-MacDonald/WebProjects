@@ -1,111 +1,181 @@
+/* 
+Colour
+Font/Text
+Sub Container
+Spacing/Margins/Padding/Radius
+Position/Size
+Characteristics (Cursor)
+*/
+
 /* Reset some default styles */
 body, h1, p, ul, li {
     margin: 0;
     padding: 0;
 }
 
-/* Apply some basic styling */
-body {
+/* Apply the style guide to .access-banner */
+.access-banner {
+    background-color: rgba(35, 35, 35, 0.9);
+
     font-family: Arial, sans-serif;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin: 10px;
+    padding: 10px;
+    border-radius: 12px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 35px;
+}
+
+/* "access banner" for home redirect button */
+.access-banner button {
+    color: white;
+    background-color: rgb(25, 25, 25);
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+
+    font-size: 18px;
+    text-align: center;
+
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    width: 70px; /* Not sure why 100% doesn't work */
+    cursor: pointer;
+}
+
+/* Home button hover characteristic */
+.access-banner button:hover {
+    color: #007bff;
+    background-color: black;
+}
+
+/* Main form styling */
+body {
     background-color: #f2f2f2;
     color: white;
+
+    font-family: Arial, sans-serif;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     height: 100vh;
     background-position: center;
 }
 
-.container {
-    max-width: 1000px;
-    padding: 30px;
+/* Login/Signup Form Styling Container */
+.central-container {
+    
     background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
 
+    padding: 30px;
+    border-radius: 15px;
 }
 
-.titlecontainer {
-    font-size: 25px;
-    font-weight: bold; /* Set to bold */
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 25px;
-    padding-right: 25px;
-    text-align: center;
-    max-width: 1000px;
+/* Title for the page */
+.central-container .title-container {
     background-color: rgba(0, 0, 0, 1);
-    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+
+    font-weight: bold;
+    text-align: center;
+
+    padding: 10px 25px;
+    border-radius: 15px;
 }
 
-/* Form styling */
-form {
+/* Move the form down inside of the container */
+.central-container form {
     margin-top: 25px;
 }
 
-.button-container {
+/* Assuring the Submit/Redirect buttons are dynamically controlled */
+.central-container .button-container {
     display: flex;
     justify-content: space-between;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="submit"],
-button[type="button"] {
-    width: 100%;
-    padding: 8px; /* Adjusted padding */
+/* Input styling*/
+.central-container input[type="text"],
+.central-container input[type="password"] {
+    color: #007bff;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+
+    text-align: center;
+    font-size: 18px;
+
+    box-sizing: border-box;
+    padding: 8px;
     margin-bottom: 15px;
     border: 1px solid transparent;
-    background-color: rgba(0, 0, 0, 0.9);
     border-radius: 15px;
-    font-size: 18px;
-    box-sizing: border-box; /* Added box-sizing property */
-    text-align: center;
-    color: #007bff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    
+    width: 100%;
 }
 
-/* Style for autofill state */
-input[type="text"]:-webkit-autofill,
-input[type="password"]:-webkit-autofill,
-input[type="submit"]:-webkit-autofill,
-button[type="button"]:-webkit-autofill {
+/* Style for autofill state : Annoying chrome fix */
+.central-container input[type="text"]:-webkit-autofill,
+.central-container input[type="password"]:-webkit-autofill {
     -webkit-text-fill-color: #007bff;
-    transition: background-color 5000s ease-in-out 0s; /* Override Chrome's autofill background color */
+    transition: background-color 5000s ease-in-out 0s;
 }
 
-input[type="submit"],
-button[type="button"] {
+/* Submit and Button Stylign*/
+.central-container input[type="submit"],
+.central-container button[type="button"] {
+    color: #fff;
+    background-color: #007bff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+
+    text-align: center;
+
+    padding: 8px;
+    border-radius: 15px;
     margin-top: 12px;
     margin-bottom: 0px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
+
+    box-sizing: border-box;
     width: 40%;
+    border: 1px solid transparent;
     font-size: 18px;
-    box-sizing: border-box; /* Added box-sizing property */
+    
+    cursor: pointer;
 }
 
-input[type="submit"]:hover,
-button[type="button"]:hover {
+.central-container input[type="submit"]:hover,
+.central-container button[type="button"]:hover {
     background-color: black;
     color: #007bff;
 }
 
-.message-list {
-    list-style: none;
-    padding: 0;
-    text-align: center; /* Center the messages */
+.central-container .message-list {
+    text-align: center;
     font-size: 18px;
+
+    padding: 0;
+
+    list-style: none;
 }
 
 /* Error messages */
-.error {
+.central-container .error {
     color: red;
 }
 
 /* Additional styles for the success and error classes */
-.success {
+.central-container .success {
     color: green;
 }

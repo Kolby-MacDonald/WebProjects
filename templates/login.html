@@ -1,35 +1,58 @@
+<!-- NEEDS COMMENTS -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/access_style.css') }}">
 </head>
-    <body style="background-image: url('../static/images/login.jpg'); background-size: cover;">
-        <div class="container">
-            <div class="titlecontainer"><h1 align="center">Login</h1></div>
-            
-            <form method="POST" action="{{ url_for('login') }}">
-                <input type="text" name="username" placeholder="Username" required><br>
-                <input type="password" name="password" placeholder="Password" required><br>
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <ul class="{% if 'success' in messages %}success{% else %}error{% endif %}">
-                            {% for message in messages %}
-                                <li>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
-                <div class="button-container">
-                    <button type="button" onclick=redirectToPage()>Signup</button>
-                    <input type="submit" value="Login">
-                </div>
-                <script>
-                    function redirectToPage() {
-                        window.location.href = "signup";
-                    }
-                </script>
-            </form>
+<style>
+    body::before {
+        content: '';
+        background: radial-gradient(circle at center, rgb(181, 101, 247), 28% ,rgb(79, 1, 151));
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+    }
+</style>
+<body>
+    <div class="access-banner">
+        <div class="button-container">
+            <button type="button" onclick="redirectToLogin()">Home</button>
+            <script>
+                function redirectToLogin() {
+                    window.location.href = "/";
+                }
+            </script>
         </div>
-    </body>
+    </div>
+    <div class="central-container">
+        <div class="title-container"><h1>Login</h1></div>
+        <form method="POST" action="{{ url_for('login') }}">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="{% if 'success' in messages %}success{% else %}error{% endif %}">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <div class="button-container">
+                <button type="button" onclick="redirectToPage()">Signup</button>
+                <input type="submit" value="Login">
+            </div>
+            <script>
+                function redirectToPage() {
+                    window.location.href = "signup";
+                }
+            </script>
+        </form>
+    </div>
+</body>
 </html>
