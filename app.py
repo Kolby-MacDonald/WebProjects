@@ -4,10 +4,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_container.models import Users
+from database_container.models import Users, BlogPosts
 import hashlib
 import os
 import re
+import datetime
+
+
 
 # Class to obtain user specific credentials.
 class User(UserMixin):
@@ -102,28 +105,56 @@ def signup():
 
     return render_template('signup.html')
 
-# Initial Page Upon Accessing the website
 @app.route('/')
 def blog():
-    user_status = "logged_out" # Assume the user logged out.
-    if current_user.is_authenticated: # Check if they are logged in.
-        user_status = "logged_in" #If so set the logged in status to logged in.
-        if current_user.role.lower() == "admin": # If the user is an admin (we're going to give them extra functionality).
-            pass
-        
-        elif current_user.role.lower() == "user": # If they are logged in they will get some extra functionality as well.
-            pass
-    
-    return render_template('blog.html', user_status=user_status)
+    user_status = "logged_out"
+    all_posts = session.query(BlogPosts).all()
 
-# A page only accessable to admins.
-@app.route('/admin')
+    if current_user.is_authenticated:
+        user_status = "logged_in"
+
+    # Construct a dictionary to store image URLs for each post
+    image_urls = {}
+    for post in all_posts:
+        if post.header_image:
+            image_filename = post.header_image
+            image_path = os.path.join(app.root_path, 'static', 'blog_images', image_filename)
+            image_url = url_for('static', filename=f'blog_images/{image_filename}')
+            image_urls[post.id] = image_url
+
+    return render_template('blog.html', user_status=user_status, all_posts=all_posts, image_urls=image_urls)
+
+@app.route('/admin', methods=['GET', 'POST'])
 @login_required
-def admin_page():
-    if current_user.role.lower() != "admin":
-        return redirect(url_for('blog'))
+def admin():
+    if current_user.role.lower() == "admin":
+        if request.method == 'POST':
+            title = request.form['title']
+            content = request.form['paragraph']
+            header_image = request.files['image']
 
+            # Ensure the filename is unique by appending a timestamp
+            timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+            image_filename = f"{timestamp}_{title}.jpg"  # Adjust the file extension if needed
+
+            # Save the image to the static folder
+            image_path = os.path.join(app.root_path, 'static', 'blog_images', image_filename)
+            header_image.save(image_path)
+
+            new_post = BlogPosts(title=title, content=content, header_image=image_filename)
+            session.add(new_post)
+            session.commit()
+
+            # Successful image upload and data insertion
+            return redirect(url_for('admin'))  # Redirect to the admin page after successful upload
+    else:
+        return redirect(url_for('blog'))
     return render_template('admin.html')
+
+@app.route('/account')
+@login_required
+def account_page():
+    return render_template('account.html', user_role = current_user.role.lower())
 
 @app.route('/logout')
 @login_required

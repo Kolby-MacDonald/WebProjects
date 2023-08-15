@@ -1,3 +1,6 @@
 *.db
 .env
-database_container/__pycache__/
+*.pyc
+database_container/__pycache__/*
+static/blog_images/*
+database_container/__pycache__/models.cpython-39.pyc

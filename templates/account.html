@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title> <!-- Table Title : Subject to change -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <p>Testing paragraph for account page</p>
+    {% if user_role == "admin" %}
+        <p>User is an admin</p>
+    {% else %}
+        <p>User is a regular user</p>
+    {% endif %}
+
+    <button type="button" onclick="redirectToBlog()">Back to Blog</button>
+    <button type="button" onclick="redirectToAdmin()">Admin Page</button>
+    <script> 
+        function redirectToBlog() {
+            window.location.href = "blog";
+        }
+        function redirectToAdmin() {
+            window.location.href = "admin";
+        }
+    </script>
+</body>

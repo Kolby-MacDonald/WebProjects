@@ -15,13 +15,14 @@
     </style>
 </head>
     <body>
+        <!-- Top Left Button Container -->
         <div>
-            <div class="access-banner"> <!-- Top Left Button Container -->
+            <div class="access-banner">
                 <div class="button-container">
 
                     {% if user_status == "logged_in" %} <!-- Access Buttons For Logged In Users -->
-                        <button type="button" onclick="redirectToLogin()">Logout</button>
-                        <button type="button" onclick="redirectToSignup()">My Account</button>
+                        <button type="button" onclick="redirectToLogout()">Logout</button>
+                        <button type="button" onclick="redirectToAccount()">Account</button>
                     {% else %} <!-- Access Buttons For Non Logged In Users -->
                         <button type="button" onclick="redirectToLogin()">Login</button>
                         <button type="button" onclick="redirectToSignup()">Signup</button>
@@ -38,20 +39,38 @@
                         function redirectToLogout() {
                             window.location.href = "logout";
                         }
+                        function redirectToAccount() {
+                            window.location.href = "account";
+                        }
                     </script>
 
                 </div>
             </div>
         </div> 
-        <div class="column-container"> <!-- TESTING NAVBAR: Intend to have buttons like projects, blogs, and more-->
+
+        <!-- TESTING NAVBAR: Intend to have buttons like projects, blogs, and more-->
+        <div class="column-container"><div class="button-container">
             <button type="button" onclick="">1</button> <!-- Styling Needed -->
             <button type="button" onclick="">2</button>
             <button type="button" onclick="">3</button>
             <button type="button" onclick="">4</button>
-        </div>
-        <div class="header-container"> <!-- TESTING : Header / Nav Bar Sorta -->
+        </div></div>
+
+        <div class="header-container">
             <div class="blog-title"><h1><i>BUG'S BUNKER</i></h1></div>
-            
+            <!--
+            <ul>
+                {% for post in all_posts %}
+                    <div class="post">
+                        <p>{{ post.title }}</p>
+                        {% if post.header_image %}
+                            <img src="{{ image_urls[post.id] }}" alt="{{ post.title }} Image">
+                        {% endif %}
+                        <p>{{ post.content }}</p>
+                    </div>
+                {% endfor %}
+            </ul>
+            -->
         </div>
     </body>
 </html>

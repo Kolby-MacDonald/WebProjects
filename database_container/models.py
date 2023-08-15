@@ -3,6 +3,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import UserMixin
 from dotenv import load_dotenv
+import os
+load_dotenv()
 
 Base = declarative_base()
 
@@ -32,7 +34,7 @@ class BlogPosts(Base):
     id = Column("id", Integer, primary_key=True, autoincrement=True)            # Post ID
     title = Column("title", String)                                             # Post Title
     content = Column("content", String)                                         # Post Body Content
-    header_image = Column("header_image", LargeBinary)                          # Post Header Image
+    header_image = Column("header_image", String)                               # Post Header Image
 
     def __init__(self, title, content, header_image):
         self.title = title

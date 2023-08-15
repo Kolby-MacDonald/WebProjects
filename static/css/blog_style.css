@@ -82,12 +82,13 @@ body, h1, p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 
     /* Padding, border radius, and margins */
     padding: 10px;
     border-radius: 12px;
     margin: 10px;
+    min-height: 155px;
 
     /* Absolute positioning below the "access" buttons */
     position: absolute;
@@ -153,6 +154,7 @@ button[type="button"]:hover {
     padding: 10px;
     border-radius: 12px;
     margin: 10px;
+    min-height: 255px;
 
     /* Absolute positioning */
     position: absolute;
@@ -162,8 +164,8 @@ button[type="button"]:hover {
     left: 100px;
     right: 0;
     bottom: 0;
-}
 
+}
 
 .header-container .blog-title{
     /* Text color, background color, and box shadow */
@@ -194,4 +196,20 @@ button[type="button"]:hover {
     align-items: center;
     justify-content: center;
 
+    overflow: hidden;
+
 }
+
+/* Nonstandard solution
+@media (max-width: 500px) {
+    .header-container .blog-title {
+      display: none;
+    }
+}
+
+@media (max-height: 110px) {
+    .header-container .blog-title {
+      display: none;
+    }
+}
+*/
